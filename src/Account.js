@@ -10,7 +10,7 @@ export default class Account extends Component {
 
 handleDepositClick(e) {
   e.preventDefault();
-  if (this.inputBox.value === '') {
+  if (this.inputBox.value === ''|| isNaN(this.inputBox.value)) {
     alert('please enter an amount');
     this.inputBox.value = '';
   } else {
@@ -25,8 +25,9 @@ handleDepositClick(e) {
 
 handleWithdrawlClick(e) {
     e.preventDefault();
-    if (this.inputBox.value === '') {
+    if (this.inputBox.value === '' || isNaN(this.inputBox.value)) {
       alert('please enter an amount');
+      this.inputBox.value = '';
     } else {
     let amount = parseInt(this.inputBox.value);
     let newBalance = this.state.balance - amount;
