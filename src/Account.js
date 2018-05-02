@@ -35,6 +35,27 @@ handleWithdrawlClick(e) {
       balance: newBalance
     })
     this.inputBox.value = '';
+  }
+  }
+
+handleTransferClick(e) {
+  e.preventDefault();
+  if (this.props.name === "Checking") {
+    let xAmount = parseInt(this.inputBox.value);
+    let xBalance = this.state.balance - xAmount;
+    this.setState({
+      balance: xBalance
+    })
+    this.inputBox.value = '';
+    
+    }
+  if (this.props.name === "Savings") {
+    let xAmount = parseInt(this.inputBox.value);
+    let xBalance = this.state.balance - xAmount;
+    this.setState({
+      balance: xBalance
+    })
+    this.inputBox.value = '';
     }
   }
 
@@ -51,6 +72,7 @@ handleWithdrawlClick(e) {
         <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input} />
         <input type="button" value="Deposit" onClick={(e) => this.handleDepositClick(e)}/>
         <input type="button" value="Withdraw" onClick={(e) => this.handleWithdrawlClick(e)}/>
+        <input type="button" value="Transfer" onClick={(e) => this.handleTransferClick(e)}/>
       </div>
     )
   }
